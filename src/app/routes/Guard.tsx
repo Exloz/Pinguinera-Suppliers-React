@@ -1,10 +1,10 @@
-//import { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 
 //TODO: check type
 
 interface IGuardProps {
-  children: any;
+  children: ReactNode;
 }
 
 export const Guard = ({ children }: IGuardProps) => {

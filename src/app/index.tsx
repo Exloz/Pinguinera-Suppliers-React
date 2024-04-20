@@ -1,11 +1,12 @@
 import { ReactElement } from 'react';
-import { Guard } from './routes/Guard';
 import { router } from './routes/router';
+import { AppProvider } from './core/state/AppContext';
+import { RouterProvider } from 'react-router-dom';
 
 export const App = (): ReactElement => {
   return (
     <AppProvider>
-      <Guard children={router} />
+      <RouterProvider router={router} />
     </AppProvider>
   );
 };

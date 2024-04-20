@@ -13,8 +13,8 @@ export const loginService = (loginCredentials: ICustomerLogin): Promise<boolean>
     .then((response) => {
       const storage = new StorageService();
       storage.set('token', response.token);
-      storage.set('email', response.email);
-      storage.set('userName', response.unique_name);
+      //   storage.set('email', response.email);
+      //   storage.set('userName', response.unique_name);
       return Boolean(response.token);
     });
 };

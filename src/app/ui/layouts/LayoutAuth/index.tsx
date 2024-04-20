@@ -7,7 +7,7 @@ export const LayoutAuth = (): ReactElement => {
       <main>
         <Outlet />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

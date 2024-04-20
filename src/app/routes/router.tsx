@@ -4,6 +4,8 @@ import { LayoutMain } from '../ui/layouts/LayoutMain';
 import { Component } from 'react';
 import { Guard } from './Guard';
 
+import { LoginPage } from '../pages/LoginPage';
+
 //aqui se agregan las pages
 
 export const router = createHashRouter([
@@ -12,12 +14,12 @@ export const router = createHashRouter([
     Component: LayoutAuth,
     children: [
       {
-        path: 'login',
-        Component: Login,
+        path: '',
+        Component: LoginPage,
       },
       {
         path: 'sign-up',
-        Component: SignUp,
+        Component: LoginPage,
       },
     ],
   },
@@ -29,26 +31,26 @@ export const router = createHashRouter([
         path: 'save-literature',
         element: (
           <Guard>
-            <SaveLiterature />
+            <h1>save literature page</h1>
           </Guard>
         ),
       },
-      {
-        path: 'quote-literature',
-        element: (
-          <Guard>
-            <QuoteLiterature />
-          </Guard>
-        ),
-      },
-      {
-        path: 'budget-literature',
-        element: (
-          <Guard>
-            <BudgetLiterature />
-          </Guard>
-        ),
-      },
+      //   {
+      //     path: 'quote-literature',
+      //     element: (
+      //       <Guard>
+      //         <QuoteLiterature />
+      //       </Guard>
+      //     ),
+      //   },
+      //   {
+      //     path: 'budget-literature',
+      //     element: (
+      //       <Guard>
+      //         <BudgetLiterature />
+      //       </Guard>
+      //     ),
+      //   },
     ],
   },
 ]);
