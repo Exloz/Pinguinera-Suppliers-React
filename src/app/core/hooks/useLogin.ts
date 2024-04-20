@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { loginService } from '../services/authServices/login.service';
 import { AppContext } from '../state/AppContext';
 
-export const useAuth = () => {
+export const useLogin = () => {
   const navigate = useNavigate();
   const [error, setError] = useState<string>();
   const { dispatch } = useContext(AppContext);
@@ -14,7 +14,7 @@ export const useAuth = () => {
         dispatch({ type: 'USER_LOGGED' });
         navigate('save-literature');
       } else {
-        setError('Las credenciales son incorrectas');
+        setError('Incorrect email or password, try again');
       }
     });
 

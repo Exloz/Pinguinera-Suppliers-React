@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
 import { Form } from '../ui/components/form/index';
-import { useAuth } from '../core/hooks/useAuth';
+import { useLogin } from '../core/hooks/useLogin';
 
 export const LoginContainer = (): ReactElement => {
-  const { authenticate } = useAuth();
+  const { authenticate } = useLogin();
 
   const handleSubmit = (event: any) => {
     event.preventDefault();

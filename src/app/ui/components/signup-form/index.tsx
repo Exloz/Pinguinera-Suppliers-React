@@ -1,10 +1,15 @@
 import { ReactElement } from 'react';
 
-export const Form = ({ handleSubmit }: any): ReactElement => {
+export const FormSignUp = ({ handleSubmit }: any): ReactElement => {
   return (
     <form onSubmit={handleSubmit}>
       <fieldset>
-        <legend>Enter credentials</legend>
+        <legend>SignUp</legend>
+
+        <label>
+          UserName:
+          <input type='text' name='userName' />
+        </label>
 
         <label>
           Email:

@@ -5,6 +5,7 @@ import { Component } from 'react';
 import { Guard } from './Guard';
 
 import { LoginPage } from '../pages/LoginPage';
+import { SignUpPage } from '../pages/SignUpPage';
 
 //aqui se agregan las pages
 
@@ -14,12 +15,12 @@ export const router = createHashRouter([
     Component: LayoutAuth,
     children: [
       {
-        path: '',
+        path: 'login',
         Component: LoginPage,
       },
       {
-        path: 'sign-up',
-        Component: LoginPage,
+        path: 'signup',
+        Component: SignUpPage,
       },
     ],
   },

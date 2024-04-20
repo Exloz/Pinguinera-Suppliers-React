@@ -2,7 +2,7 @@ import { enviroment } from '../../../environment/environment';
 
 export const urls = {
   login: `${enviroment.apiUrl}/Customer/LoginCustomer`,
-  signUp: `${enviroment.apiUrl}/Customer/RegisterCostumer`,
+  signUp: `${enviroment.apiUrl}/Customer/RegisterCustomer`,
 
   allLiterature: `${enviroment.apiUrl}/Literature/GetAllLiteratureList`,
 

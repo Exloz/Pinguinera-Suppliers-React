@@ -4,7 +4,7 @@ import http from '../general/http.service';
 import { StorageService } from '../general/storage.service';
 
 export const signUpService = (singUpCredentials: ICustomerSignUp): Promise<boolean> => {
-  const url = urls.login;
+  const url = urls.signUp;
   const body = singUpCredentials;
 
   return http
