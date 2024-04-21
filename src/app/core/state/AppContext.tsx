@@ -33,6 +33,8 @@ export const reducer = (state: IState, action: IAction): IState => {
       return { ...state, isCustomerLogged: true };
     case 'LITERATURE_GOTTEN':
       return { ...state, literatureList: action.payload };
+    case 'ADD_LITERATURE':
+      return { ...state, literatureList: [...state.literatureList, action.payload] };
     default:
       return state;
   }
