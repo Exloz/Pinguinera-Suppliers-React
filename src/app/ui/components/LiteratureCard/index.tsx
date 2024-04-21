@@ -3,13 +3,13 @@ import { ILiteratureCopy } from '../../../core/models/literature-copy';
 
 interface ICardProps {
   literatureCopy: ILiteratureCopy;
-  onSelect: (copyId: number) => void;
+  onSelect: (literatureCopy: number) => void;
   selected: boolean;
 }
 
 export const Card: React.FC<ICardProps> = ({ literatureCopy, onSelect, selected }) => {
   const handleCardClick = () => {
-    onSelect(literatureCopy.copyId);
+    onSelect(literatureCopy.literatureCopyId);
   };
 
   return (

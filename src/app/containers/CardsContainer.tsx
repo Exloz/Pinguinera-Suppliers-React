@@ -1,15 +1,15 @@
-import { ReactElement, useState } from 'react';
+import { useState } from 'react';
 import { useLiterature } from '../core/hooks/useLiterature';
 import { Card } from '../ui/components/LiteratureCard/index';
 
-export const CardsContainer = (): ReactElement => {
+export const CardsContainer: React.FC = () => {
   const { literatureCopies } = useLiterature();
   const [selectedCopies, setSelectedCopies] = useState({});
 
-  const handleSelect = (copyId) => {
+  const handleSelect = (copyId: number) => {
     setSelectedCopies((prev) => ({
       ...prev,
-      [copyId]: !prev[copyId] ? 1 : 0,
+      [copyId]: !prev[copyId],
     }));
   };
 
@@ -20,7 +20,7 @@ export const CardsContainer = (): ReactElement => {
           key={copy.literatureCopyId}
           literatureCopy={copy}
           onSelect={handleSelect}
-          selected={!!selectedCopies[copy.copyId]}
+          selected={!!selectedCopies[copy.literatureCopyId]}
         />
       ))}
     </>
