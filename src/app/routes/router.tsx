@@ -6,10 +6,15 @@ import { Guard } from './Guard';
 
 import { LoginPage } from '../pages/LoginPage';
 import { SignUpPage } from '../pages/SignUpPage';
+import { CreateLiteraturePage } from '../pages/CreatePage';
 
 //aqui se agregan las pages
 
 export const router = createHashRouter([
+  {
+    path: '*',
+    Component: LoginPage,
+  },
   {
     path: '',
     Component: LayoutAuth,
@@ -26,13 +31,17 @@ export const router = createHashRouter([
   },
   {
     path: 'home',
-    Component: LayoutMain,
+    element: (
+      <Guard>
+        <LayoutMain />
+      </Guard>
+    ),
     children: [
       {
         path: 'save-literature',
         element: (
           <Guard>
-            <h1>save literature page</h1>
+            <CreateLiteraturePage />
           </Guard>
         ),
       },

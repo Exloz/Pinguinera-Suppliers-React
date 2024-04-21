@@ -6,7 +6,7 @@ export const urls = {
 
   allLiterature: `${enviroment.apiUrl}/Literature/GetAllLiteratureList`,
 
-  calculateUnit: `${enviroment.apiUrl}/Supplier/GetAllLiteratureList`,
-  calculateQuote: `${enviroment.apiUrl}/Supplier/GetAllLiteratureList`,
-  calculateBudget: `${enviroment.apiUrl}/Supplier/GetAllLiteratureList`,
+  calculateUnit: `${enviroment.apiUrl}/Supplier/CalculateUnitPrice`,
+  calculateQuote: `${enviroment.apiUrl}/Supplier/CalculateQuotePrice`,
+  calculateBudget: `${enviroment.apiUrl}/Supplier/CalculateBudgetOptimization`,
 };

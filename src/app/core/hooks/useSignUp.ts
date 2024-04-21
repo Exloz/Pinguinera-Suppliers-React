@@ -12,7 +12,7 @@ export const useSignUp = () => {
     signUpService({ userName, email, password }).then((isAuthenticated) => {
       if (isAuthenticated) {
         dispatch({ type: 'USER_LOGGED' });
-        navigate('save-literature');
+        navigate('/home/save-literature');
       } else {
         setError('Incorrect something');
       }
