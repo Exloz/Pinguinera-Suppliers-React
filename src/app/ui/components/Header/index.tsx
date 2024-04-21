@@ -8,7 +8,7 @@ export const Header = ({ userName }: any): ReactElement => {
       <nav className='header__menus'>
         <ul id='header-list' className='menu-hidden'>
           <li className='header__option'>
-            <Link to='/'>Create literature copy</Link>
+            <Link to='/home/save-literature'>Create literature copy</Link>
           </li>
           <li className='header__option'>
             <Link to='/portfolio'>Quote</Link>

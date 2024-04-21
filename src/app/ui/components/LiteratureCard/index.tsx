@@ -10,6 +10,7 @@ export const Card = ({ literatureCopy }: ICardProps): ReactElement => {
     <article className='card'>
       <header>
         <h4 className='literature__title'>{literatureCopy.title}</h4>
+        <img src={literatureCopy.coverUrl} alt={`Cover for ${literatureCopy.title}`} />
       </header>
       <main>
         <h5>{literatureCopy.type === 0 ? 'Book' : 'Novel'}</h5>
