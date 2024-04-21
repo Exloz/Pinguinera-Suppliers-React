@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { useSignUp } from '../core/hooks/useSignUp';
-import { FormSignUp } from '../ui/components/signup-form';
+import { FormSignUp } from '../ui/components/SignupForm';
 
 export const SignUpContainer = (): ReactElement => {
   const { authenticate } = useSignUp();

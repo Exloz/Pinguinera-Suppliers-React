@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Form } from '../ui/components/form/index';
+import { Form } from '../ui/components/Form/index';
 import { useLogin } from '../core/hooks/useLogin';
 
 export const LoginContainer = (): ReactElement => {

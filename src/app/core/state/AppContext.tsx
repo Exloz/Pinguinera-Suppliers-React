@@ -31,7 +31,7 @@ export const reducer = (state: IState, action: IAction): IState => {
   switch (action.type) {
     case 'USER_LOGGED':
       return { ...state, isCustomerLogged: true };
-    case 'CUSTOMERS_GOTTEN':
+    case 'LITERATURE_GOTTEN':
       return { ...state, literatureList: action.payload };
     default:
       return state;
