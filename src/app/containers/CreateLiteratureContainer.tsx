@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useCreateLiterature } from '../core/hooks/useCreateLiterature';
+import { FormAddLiterature } from '../ui/components/AddLiteratureForm';
 
 export const CreateLiteratureContainer = () => {
   const { createLiterature } = useCreateLiterature();
@@ -18,12 +19,5 @@ export const CreateLiteratureContainer = () => {
     });
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input type='text' name='title' placeholder='Title' required />
-      <input type='number' name='type' placeholder='Type (0 or 1)' required />
-      <input type='text' name='price' placeholder='Price' required />
-      <button type='submit'>Add Literature</button>
-    </form>
-  );
+  return <FormAddLiterature handleSubmit={handleSubmit} />;
 };
