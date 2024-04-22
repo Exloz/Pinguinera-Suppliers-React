@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { useLiterature } from '../core/hooks/useLiterature';
-import { Card } from '../ui/components/LiteratureCard/index';
+import { Cards } from '../ui/components/LiteratureCard/index';
 import { AppContext } from '../core/state/AppContext';
 
 export const CardsContainer: React.FC = () => {
@@ -14,7 +14,7 @@ export const CardsContainer: React.FC = () => {
   return (
     <>
       {literatureCopies.map((copy) => (
-        <Card
+        <Cards
           key={copy.literatureCopyId}
           literatureCopy={copy}
           onSelect={handleSelect}

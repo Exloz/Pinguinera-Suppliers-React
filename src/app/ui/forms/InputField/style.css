@@ -1,0 +1,16 @@
+.form__group {
+  margin-bottom: 10px;
+}
+
+.form__label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form__input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

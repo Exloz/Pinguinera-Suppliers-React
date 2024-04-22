@@ -1,0 +1,10 @@
+.form-literature {
+  align-content: center;
+  width: 80dvh;
+  padding-inline: 50px;
+}
+
+.form-literature__title {
+  padding-bottom: 50px;
+  text-align: center;
+}

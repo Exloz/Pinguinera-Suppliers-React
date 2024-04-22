@@ -1,14 +1,15 @@
 import { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
+import './style.css';
 
 export const Header = ({ userName }: any): ReactElement => {
   return (
-    <>
-      <h1>Welcome {userName}</h1>
+    <header className='header'>
+      <h1>Welcome to our store {userName}</h1>
       <nav className='header__menus'>
         <ul id='header-list' className='menu-hidden'>
           <li className='header__option'>
-            <Link to='/home/save-literature'>Create literature copy</Link>
+            <Link to='/home/save-literature'>Create Copy</Link>
           </li>
           <li className='header__option'>
             <Link to='/home/quote-literature'>Quote</Link>
@@ -18,6 +19,6 @@ export const Header = ({ userName }: any): ReactElement => {
           </li>
         </ul>
       </nav>
-    </>
+    </header>
   );
 };

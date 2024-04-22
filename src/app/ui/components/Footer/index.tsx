@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+import './style.css';
 
 export const Footer = (): ReactElement => {
   return (

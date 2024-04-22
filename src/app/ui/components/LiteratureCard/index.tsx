@@ -1,5 +1,7 @@
 import { ReactElement } from 'react';
 import { ILiteratureCopy } from '../../../core/models/literature-copy';
+import { LiteratureCard } from '../../elements/LiteratureCard/LiteratureCard';
+import './style.css';
 
 interface ICardProps {
   literatureCopy: ILiteratureCopy;
@@ -7,21 +9,16 @@ interface ICardProps {
   selected: boolean;
 }
 
-export const Card: React.FC<ICardProps> = ({ literatureCopy, onSelect, selected }) => {
+export const Cards: React.FC<ICardProps> = ({ literatureCopy, onSelect, selected }) => {
   const handleCardClick = () => {
     onSelect(literatureCopy.literatureCopyId);
   };
 
   return (
-    <article className={`card ${selected ? 'selected' : ''}`} onClick={handleCardClick}>
-      <header>
-        <h4 className='literature__title'>{literatureCopy.title}</h4>
-        <img src={literatureCopy.coverUrl} alt={`Cover for ${literatureCopy.title}`} />
-      </header>
-      <main>
-        <h5>{literatureCopy.type === 0 ? 'Book' : 'Novel'}</h5>
-        <h6>{literatureCopy.basePrice}</h6>
-      </main>
-    </article>
+    <LiteratureCard
+      literatureCopy={literatureCopy}
+      isSelected={selected}
+      onClick={handleCardClick}
+    />
   );
 };

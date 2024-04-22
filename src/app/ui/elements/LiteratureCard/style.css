@@ -1,0 +1,55 @@
+.literature-card {
+  flex: 0 0 200px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+
+  img {
+    width: 100%;
+    border-radius: 5px;
+  }
+}
+
+.literature-card--selected {
+  background-color: rgb(10, 32, 51);
+}
+
+.literature-card__header {
+  align-items: center;
+}
+
+.literature-card__title {
+  text-align: center;
+  flex-grow: 1;
+  margin-right: 10px;
+  padding-bottom: 10px;
+}
+
+.literature-card__image {
+  width: 50px;
+  height: auto;
+}
+
+.literature-card__main {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.literature-card__type {
+  text-align: left;
+}
+
+.literature-card__price {
+  text-align: right;
+}
+
+.literature-card__type,
+.literature-card__price {
+  font-size: 20px;
+  margin: 0;
+  font-weight: normal;
+}

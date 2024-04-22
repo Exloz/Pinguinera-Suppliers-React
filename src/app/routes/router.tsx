@@ -1,7 +1,6 @@
 import { createHashRouter } from 'react-router-dom';
 import { LayoutAuth } from '../ui/layouts/LayoutAuth';
 import { LayoutMain } from '../ui/layouts/LayoutMain';
-import { Component } from 'react';
 import { Guard } from './Guard';
 
 import { LoginPage } from '../pages/LoginPage';
@@ -9,8 +8,6 @@ import { SignUpPage } from '../pages/SignUpPage';
 import { CreateLiteraturePage } from '../pages/CreatePage';
 import { SelectedLiteratureEditor } from '../containers/QuoteLiteratureContainer';
 import { BudgetOverviewEditor } from '../containers/BudgetLiteratureContainer';
-
-//aqui se agregan las pages
 
 export const router = createHashRouter([
   {

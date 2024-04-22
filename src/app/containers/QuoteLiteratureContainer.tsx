@@ -1,75 +1,30 @@
-import { useContext, useState } from 'react';
-import { AppContext } from '../core/state/AppContext';
-import { quoteService } from '../core/services/supplierServices/quoteLiterature.service';
 import { Modal } from '../ui/components/ModalQuote';
+import { useLiteratureEditor } from '../core/hooks/useLiteratureEditor';
+import '../ui/styles/index.css';
+import LiteratureTable from '../ui/components/LiteratureTable';
 
 export const SelectedLiteratureEditor = () => {
-  const { state } = useContext(AppContext);
-  const [quantities, setQuantities] = useState({});
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState('');
-
-  const handleQuantityChange = (copyId, quantity) => {
-    setQuantities({ ...quantities, [copyId]: quantity });
-  };
-
-  const handleSubmit = async () => {
-    const literatureQuantityList = {
-      copies: Object.keys(quantities).map((copyId) => ({
-        copyId: parseInt(copyId),
-        quantity: quantities[copyId],
-      })),
-    };
-
-    try {
-      const quoteDetails = await quoteService(literatureQuantityList);
-      setModalContent(`Detalles de la Cotización: ${JSON.stringify(quoteDetails)}`);
-      setModalOpen(true);
-    } catch (error) {
-      console.error('Error al obtener la cotización:', error);
-    }
-  };
+  const {
+    state,
+    quantities,
+    isModalOpen,
+    modalContent,
+    handleQuantityChange,
+    handleSubmit,
+    closeModal,
+  } = useLiteratureEditor();
 
   return (
     <>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Type</th>
-            <th>Gross Price</th>
-            <th>Cantidad</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(state.selectedLiterature)
-            .filter((copyId) => state.selectedLiterature[copyId])
-            .map((copyId) => {
-              const copy = state.literatureList.find(
-                (l) => l.literatureCopyId === parseInt(copyId)
-              );
-              return (
-                <tr key={copyId}>
-                  <td>{copy.title}</td>
-                  <td>{copy.type === 0 ? 'Libro' : 'Novela'}</td>
-                  <td>{copy.grossPrice}</td>
-                  <td>
-                    <input
-                      type='number'
-                      value={quantities[copyId] || 0}
-                      onChange={(e) => handleQuantityChange(copyId, parseInt(e.target.value))}
-                    />
-                  </td>
-                </tr>
-              );
-            })}
-        </tbody>
-      </table>
-      <button onClick={handleSubmit}>Enviar Cantidades</button>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setModalOpen(false)}
-        title='Resultado de la Cotización'>
+      <LiteratureTable
+        state={state}
+        quantities={quantities}
+        handleQuantityChange={handleQuantityChange}
+      />
+      <button className='literature-table__submit-btn' onClick={handleSubmit}>
+        Enviar Cantidades
+      </button>
+      <Modal isOpen={isModalOpen} onClose={closeModal} title='Result of the quotation'>
         <p>{modalContent}</p>
       </Modal>
     </>
