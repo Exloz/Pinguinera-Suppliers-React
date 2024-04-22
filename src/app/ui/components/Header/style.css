@@ -20,6 +20,6 @@
 
   .header__option {
     font-size: 20px;
-    list-style: inside;
+    list-style: none;
   }
 }

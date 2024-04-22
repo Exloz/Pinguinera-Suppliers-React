@@ -9,7 +9,7 @@ const LiteratureTable = ({ state, quantities, handleQuantityChange }) => {
           <th className='literature-table__header'>Title</th>
           <th className='literature-table__header'>Type</th>
           <th className='literature-table__header'>Gross Price</th>
-          <th className='literature-table__header'>Cantidad</th>
+          <th className='literature-table__header'>Quantity</th>
         </tr>
       </thead>
       <tbody className='literature-table__body'>

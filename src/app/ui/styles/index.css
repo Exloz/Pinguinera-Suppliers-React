@@ -77,9 +77,10 @@ main {
   color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
-  margin-top: 10px;
+  margin: 30px;
+  height: 50dvh;
 }
 
 .literature-table__submit-btn:hover {

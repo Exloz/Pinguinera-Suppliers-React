@@ -10,7 +10,7 @@ const LiteratureTableRow = ({ copy, quantity, handleQuantityChange }) => {
         <input
           className='literature-table__input'
           type='number'
-          value={quantity || 1}
+          value={quantity || 0}
           onChange={(e) => handleQuantityChange(copy.literatureCopyId, parseInt(e.target.value))}
         />
       </td>

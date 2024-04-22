@@ -1,6 +1,6 @@
 import { Modal } from '../ui/components/ModalQuote';
 import { useLiteratureEditor } from '../core/hooks/useLiteratureEditor';
-import '../ui/styles/index.css';
+
 import LiteratureTable from '../ui/components/LiteratureTable';
 
 export const SelectedLiteratureEditor = () => {
@@ -22,7 +22,7 @@ export const SelectedLiteratureEditor = () => {
         handleQuantityChange={handleQuantityChange}
       />
       <button className='literature-table__submit-btn' onClick={handleSubmit}>
-        Enviar Cantidades
+        Request Quote
       </button>
       <Modal isOpen={isModalOpen} onClose={closeModal} title='Result of the quotation'>
         <p>{modalContent}</p>
