@@ -5,7 +5,6 @@ import { CreateLiteratureContainer } from '../containers/CreateLiteratureContain
 export const CreateLiteraturePage = (): ReactElement => {
   return (
     <>
-      <CardsContainer />;
       <CreateLiteratureContainer />
     </>
   );

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { AppContext } from '../state/AppContext';
 import { ICreateCopy } from '../models/literature-copy-create';
-import { createLiteratureService } from '../services/authServices/saveLiterature.service';
+import { createLiteratureService } from '../services/supplierServices/saveLiterature.service';
 
 export const useCreateLiterature = () => {
   const { dispatch } = useContext(AppContext);

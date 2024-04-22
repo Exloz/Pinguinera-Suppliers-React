@@ -4,6 +4,7 @@ import { ILiteratureCopy } from '../models/literature-copy';
 export const initialState: IState = {
   isCustomerLogged: false,
   literatureList: [],
+  selectedLiterature: {},
 };
 
 interface IAppContext {
@@ -20,6 +21,7 @@ interface IAppProviderProps {
 interface IState {
   isCustomerLogged: boolean;
   literatureList: ILiteratureCopy[];
+  selectedLiterature: { [key: number]: boolean };
 }
 
 interface IAction {
@@ -35,6 +37,12 @@ export const reducer = (state: IState, action: IAction): IState => {
       return { ...state, literatureList: action.payload };
     case 'ADD_LITERATURE':
       return { ...state, literatureList: [...state.literatureList, action.payload] };
+    case 'TOGGLE_LITERATURE_SELECTION':
+      const newSelection = {
+        ...state.selectedLiterature,
+        [action.payload]: !state.selectedLiterature[action.payload],
+      };
+      return { ...state, selectedLiterature: newSelection };
     default:
       return state;
   }

@@ -11,7 +11,7 @@ export const Header = ({ userName }: any): ReactElement => {
             <Link to='/home/save-literature'>Create literature copy</Link>
           </li>
           <li className='header__option'>
-            <Link to='/portfolio'>Quote</Link>
+            <Link to='/home/quote-literature'>Quote</Link>
           </li>
           <li className='header__option'>
             <Link to='/contact'>Budeget Optimization</Link>

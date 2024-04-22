@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { AppContext } from '../state/AppContext';
-import { literatureListService } from '../services/authServices/literatureList.service';
+import { literatureListService } from '../services/supplierServices/literatureList.service';
 
 export const useLiterature = () => {
   const { state, dispatch } = useContext(AppContext);
