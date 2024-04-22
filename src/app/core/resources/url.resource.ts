@@ -7,6 +7,6 @@ export const urls = {
   allLiterature: `${enviroment.apiUrl}/Literature/GetAllLiteratureList`,
 
   calculateUnit: `${enviroment.apiUrl}/Supplier/CalculateUnitPrice`,
-  calculateQuote: `${enviroment.apiUrl}/Supplier/CalculateQuotePrice`,
+  calculateQuote: `${enviroment.apiUrl}/Supplier/CalculateQuoteCost`,
   calculateBudget: `${enviroment.apiUrl}/Supplier/CalculateBudgetOptimization`,
 };

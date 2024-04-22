@@ -7,6 +7,7 @@ import { Guard } from './Guard';
 import { LoginPage } from '../pages/LoginPage';
 import { SignUpPage } from '../pages/SignUpPage';
 import { CreateLiteraturePage } from '../pages/CreatePage';
+import { SelectedLiteratureEditor } from '../containers/QuoteLiteratureContainer';
 
 //aqui se agregan las pages
 
@@ -45,14 +46,14 @@ export const router = createHashRouter([
           </Guard>
         ),
       },
-      //   {
-      //     path: 'quote-literature',
-      //     element: (
-      //       <Guard>
-      //         <QuoteLiterature />
-      //       </Guard>
-      //     ),
-      //   },
+      {
+        path: 'quote-literature',
+        element: (
+          <Guard>
+            <SelectedLiteratureEditor />
+          </Guard>
+        ),
+      },
       //   {
       //     path: 'budget-literature',
       //     element: (

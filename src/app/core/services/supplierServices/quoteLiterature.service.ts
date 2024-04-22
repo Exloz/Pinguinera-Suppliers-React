@@ -9,8 +9,12 @@ export const quoteService = (
   const url = urls.calculateQuote;
   const body = literatureQuantity;
 
-  return httpService
+  const response = httpService
     .post(url, body)
     .then((response) => response.json())
     .then((response) => response);
+
+  console.log(response);
+
+  return response;
 };

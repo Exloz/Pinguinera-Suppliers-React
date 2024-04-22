@@ -1,16 +1,14 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useLiterature } from '../core/hooks/useLiterature';
 import { Card } from '../ui/components/LiteratureCard/index';
+import { AppContext } from '../core/state/AppContext';
 
 export const CardsContainer: React.FC = () => {
   const { literatureCopies } = useLiterature();
-  const [selectedCopies, setSelectedCopies] = useState({});
+  const { state, dispatch } = useContext(AppContext);
 
   const handleSelect = (copyId: number) => {
-    setSelectedCopies((prev) => ({
-      ...prev,
-      [copyId]: !prev[copyId],
-    }));
+    dispatch({ type: 'TOGGLE_LITERATURE_SELECTION', payload: copyId });
   };
 
   return (
@@ -20,7 +18,7 @@ export const CardsContainer: React.FC = () => {
           key={copy.literatureCopyId}
           literatureCopy={copy}
           onSelect={handleSelect}
-          selected={!!selectedCopies[copy.literatureCopyId]}
+          selected={!!state.selectedLiterature[copy.literatureCopyId]}
         />
       ))}
     </>
