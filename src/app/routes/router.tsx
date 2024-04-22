@@ -8,6 +8,7 @@ import { LoginPage } from '../pages/LoginPage';
 import { SignUpPage } from '../pages/SignUpPage';
 import { CreateLiteraturePage } from '../pages/CreatePage';
 import { SelectedLiteratureEditor } from '../containers/QuoteLiteratureContainer';
+import { BudgetOverviewEditor } from '../containers/BudgetLiteratureContainer';
 
 //aqui se agregan las pages
 
@@ -54,14 +55,14 @@ export const router = createHashRouter([
           </Guard>
         ),
       },
-      //   {
-      //     path: 'budget-literature',
-      //     element: (
-      //       <Guard>
-      //         <BudgetLiterature />
-      //       </Guard>
-      //     ),
-      //   },
+      {
+        path: 'budget-literature',
+        element: (
+          <Guard>
+            <BudgetOverviewEditor />
+          </Guard>
+        ),
+      },
     ],
   },
 ]);

@@ -14,7 +14,5 @@ export const quoteService = (
     .then((response) => response.json())
     .then((response) => response);
 
-  console.log(response);
-
   return response;
 };

@@ -1,32 +1,31 @@
 import { useContext, useState } from 'react';
+import { budgetService } from '../core/services/supplierServices/budgedOptimization.service';
 import { AppContext } from '../core/state/AppContext';
-import { quoteService } from '../core/services/supplierServices/quoteLiterature.service';
 import { Modal } from '../ui/components/ModalQuote';
 
-export const SelectedLiteratureEditor = () => {
+export const BudgetOverviewEditor = () => {
   const { state } = useContext(AppContext);
-  const [quantities, setQuantities] = useState({});
+  const [budget, setBudget] = useState(0);
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState('');
 
-  const handleQuantityChange = (copyId, quantity) => {
-    setQuantities({ ...quantities, [copyId]: quantity });
-  };
-
   const handleSubmit = async () => {
-    const literatureQuantityList = {
-      copies: Object.keys(quantities).map((copyId) => ({
-        copyId: parseInt(copyId),
-        quantity: quantities[copyId],
-      })),
+    const selectedLiterature = Object.keys(state.selectedLiterature).filter(
+      (copyId) => state.selectedLiterature[copyId]
+    );
+
+    const budgetOverview = {
+      literatureCopies: selectedLiterature.map((copyId) => ({ copyId: parseInt(copyId) })),
+      budget: budget,
     };
 
     try {
-      const quoteDetails = await quoteService(literatureQuantityList);
-      setModalContent(`Detalles de la Cotización: ${JSON.stringify(quoteDetails)}`);
+      const budgetDetails = await budgetService(budgetOverview);
+      setModalContent(`Detalles del Presupuesto: ${JSON.stringify(budgetDetails)}`);
       setModalOpen(true);
     } catch (error) {
-      console.error('Error al obtener la cotización:', error);
+      setModalContent(`Error al calcular el presupuesto: ${error.message}`);
+      setModalOpen(true);
     }
   };
 
@@ -38,7 +37,6 @@ export const SelectedLiteratureEditor = () => {
             <th>Title</th>
             <th>Type</th>
             <th>Gross Price</th>
-            <th>Cantidad</th>
           </tr>
         </thead>
         <tbody>
@@ -53,23 +51,27 @@ export const SelectedLiteratureEditor = () => {
                   <td>{copy.title}</td>
                   <td>{copy.type === 0 ? 'Libro' : 'Novela'}</td>
                   <td>{copy.grossPrice}</td>
-                  <td>
-                    <input
-                      type='number'
-                      value={quantities[copyId] || 0}
-                      onChange={(e) => handleQuantityChange(copyId, parseInt(e.target.value))}
-                    />
-                  </td>
                 </tr>
               );
             })}
         </tbody>
       </table>
-      <button onClick={handleSubmit}>Enviar Cantidades</button>
+      <div>
+        <label>
+          Presupuesto Total:
+          <input
+            type='number'
+            value={budget}
+            onChange={(e) => setBudget(parseFloat(e.target.value))}
+            min='0'
+          />
+        </label>
+        <button onClick={handleSubmit}>Calcular Presupuesto</button>
+      </div>
       <Modal
         isOpen={isModalOpen}
         onClose={() => setModalOpen(false)}
-        title='Resultado de la Cotización'>
+        title='Resultado del Presupuesto'>
         <p>{modalContent}</p>
       </Modal>
     </>
