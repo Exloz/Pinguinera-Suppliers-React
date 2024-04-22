@@ -7,7 +7,7 @@ import '../../styles/index.css';
 
 export const LayoutMain = (): ReactElement => {
   return (
-    <>
+    <div className='responsive'>
       <HeaderContainer />
       <main>
         <section className='cards-section'>
@@ -16,6 +16,6 @@ export const LayoutMain = (): ReactElement => {
         <Outlet />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };

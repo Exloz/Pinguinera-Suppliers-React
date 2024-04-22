@@ -8,15 +8,19 @@ export const useSignUp = () => {
   const [error, setError] = useState<string>();
   const { dispatch } = useContext(AppContext);
 
-  const authenticate = (userName: string, email: string, password: string) =>
-    signUpService({ userName, email, password }).then((isAuthenticated) => {
+  const authenticate = async (userName: string, email: string, password: string) => {
+    try {
+      const isAuthenticated = await signUpService({ userName, email, password });
       if (isAuthenticated) {
         dispatch({ type: 'USER_LOGGED' });
         navigate('/home/save-literature');
       } else {
-        setError('Incorrect something');
+        setError('Incorrect or missing information.');
       }
-    });
+    } catch (error) {
+      setError('Please check your submission and try again.');
+    }
+  };
 
   return { authenticate, error };
 };

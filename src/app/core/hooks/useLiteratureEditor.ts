@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { AppContext } from '../state/AppContext';
 import { quoteService } from '../services/supplierServices/quoteLiterature.service';
+import { formatQuoteDetails } from '../models/Modal';
 
 export const useLiteratureEditor = () => {
   const { state } = useContext(AppContext);
@@ -22,10 +23,12 @@ export const useLiteratureEditor = () => {
 
     try {
       const quoteDetails = await quoteService(literatureQuantityList);
-      setModalContent(`Quote Details: ${JSON.stringify(quoteDetails)}`);
+      const formattedDetails = formatQuoteDetails(quoteDetails);
+      setModalContent(formattedDetails);
       setModalOpen(true);
     } catch (error) {
-      console.error('Error:', error);
+      setModalContent('Something went wrong, try again carefully');
+      setModalOpen(true);
     }
   };
 

@@ -15,7 +15,8 @@ export const SelectedLiteratureEditor = () => {
   } = useLiteratureEditor();
 
   return (
-    <>
+    <section className='quote-container'>
+      <h1>Select copies and quote their value!</h1>
       <LiteratureTable
         state={state}
         quantities={quantities}
@@ -24,9 +25,9 @@ export const SelectedLiteratureEditor = () => {
       <button className='literature-table__submit-btn' onClick={handleSubmit}>
         Request Quote
       </button>
-      <Modal isOpen={isModalOpen} onClose={closeModal} title='Result of the quotation'>
-        <p>{modalContent}</p>
+      <Modal isOpen={isModalOpen} onClose={closeModal} title='Result of Quotation'>
+        <div dangerouslySetInnerHTML={{ __html: modalContent }} />
       </Modal>
-    </>
+    </section>
   );
 };

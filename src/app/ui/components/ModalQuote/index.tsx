@@ -15,6 +15,7 @@ export const Modal = ({ isOpen, onClose, title, children }) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        overflowY: 'auto',
       }}>
       <div
         style={{
@@ -23,6 +24,8 @@ export const Modal = ({ isOpen, onClose, title, children }) => {
           borderRadius: 5,
           width: '80%',
           maxWidth: 500,
+          maxHeight: '80%',
+          overflowY: 'auto',
         }}>
         <h2>{title}</h2>
         {children}

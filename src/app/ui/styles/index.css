@@ -13,6 +13,30 @@ main {
   flex-direction: row;
 }
 
+.auth-container {
+  display: flex;
+  width: 100%;
+  min-height: calc(100dvh - 60px);
+  align-items: center;
+  align-content: center;
+}
+.budget {
+  display: flex;
+  flex-direction: column;
+  width: 80dvh;
+}
+
+.budget-title {
+  text-align: center;
+  width: 55%;
+}
+
+.quote-container {
+  display: flex;
+  flex-direction: column;
+  width: 80dvh;
+}
+
 .cards-section {
   display: flex;
   flex-wrap: wrap;
@@ -23,7 +47,7 @@ main {
 }
 
 .literature-table {
-  height: 80%;
+  height: 60%;
   width: 30%;
   border-collapse: collapse;
   margin: 20px 0;
@@ -46,7 +70,7 @@ main {
 }
 
 .literature-table__row {
-  height: 50px;
+  height: 40px;
   vertical-align: middle;
 }
 
@@ -80,9 +104,88 @@ main {
   border-radius: 10px;
   cursor: pointer;
   margin: 30px;
-  height: 50dvh;
+  height: 5dvh;
+  width: 60%;
 }
 
 .literature-table__submit-btn:hover {
   background-color: #45a049;
+}
+
+.budget-table {
+  height: 60%;
+  width: 30%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.budget-table__head {
+  background-color: inherit;
+}
+
+.budget-table__header {
+  color: brown;
+  font-size: 20px;
+  text-align: justify;
+  padding: 12px 15px;
+  width: 25%;
+}
+
+.budget-table__body {
+  background-color: inherit;
+}
+
+.budget-table__row {
+  height: 20px;
+  vertical-align: middle;
+}
+
+.budget-table__row:hover {
+  background-color: rgb(14, 20, 26);
+}
+
+.budget-table__data {
+  padding: 10px 15px;
+  border-bottom: 1px solid #e1e1e1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.budget-table__input {
+  width: 30%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 30px;
+  margin: 0;
+}
+
+.budget-table__submit-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 30px;
+  height: 5dvh;
+}
+
+.budget-table__submit-btn:hover {
+  background-color: #45a049;
+}
+
+@media (max-witdth: 800px) {
+  .responsive {
+    display: block;
+    text-align: center;
+    align-items: center;
+  }
+  main {
+    display: block;
+    text-align: center;
+    align-items: center;
+  }
 }

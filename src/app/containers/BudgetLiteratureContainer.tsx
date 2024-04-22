@@ -1,79 +1,37 @@
-import { useContext, useState } from 'react';
-import { budgetService } from '../core/services/supplierServices/budgedOptimization.service';
-import { AppContext } from '../core/state/AppContext';
 import { Modal } from '../ui/components/ModalQuote';
+import { useBudgetOverview } from '../core/hooks/useBudgetOverview';
+import BudgetTable from '../ui/components/BudgedTable';
 
 export const BudgetOverviewEditor = () => {
-  const { state } = useContext(AppContext);
-  const [budget, setBudget] = useState(0);
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState('');
-
-  const handleSubmit = async () => {
-    const selectedLiterature = Object.keys(state.selectedLiterature).filter(
-      (copyId) => state.selectedLiterature[copyId]
-    );
-
-    const budgetOverview = {
-      literatureCopies: selectedLiterature.map((copyId) => ({ copyId: parseInt(copyId) })),
-      budget: budget,
-    };
-
-    try {
-      const budgetDetails = await budgetService(budgetOverview);
-      setModalContent(`Detalles del Presupuesto: ${JSON.stringify(budgetDetails)}`);
-      setModalOpen(true);
-    } catch (error) {
-      setModalContent(`Error al calcular el presupuesto: ${error.message}`);
-      setModalOpen(true);
-    }
-  };
+  const { state, budget, isModalOpen, modalContent, setBudget, handleSubmit, closeModal } =
+    useBudgetOverview();
 
   return (
-    <>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Type</th>
-            <th>Gross Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(state.selectedLiterature)
-            .filter((copyId) => state.selectedLiterature[copyId])
-            .map((copyId) => {
-              const copy = state.literatureList.find(
-                (l) => l.literatureCopyId === parseInt(copyId)
-              );
-              return (
-                <tr key={copyId}>
-                  <td>{copy.title}</td>
-                  <td>{copy.type === 0 ? 'Libro' : 'Novela'}</td>
-                  <td>{copy.grossPrice}</td>
-                </tr>
-              );
-            })}
-        </tbody>
-      </table>
+    <section className='budget'>
+      <h1 className='budget-title'>Select copies and a budget to calculate!</h1>
+      <BudgetTable
+        selectedLiterature={state.selectedLiterature}
+        literatureList={state.literatureList}
+      />
       <div>
         <label>
-          Presupuesto Total:
+          Budget:
           <input
             type='number'
+            className='budget-table__input'
             value={budget}
             onChange={(e) => setBudget(parseFloat(e.target.value))}
             min='0'
+            required
           />
         </label>
-        <button onClick={handleSubmit}>Calcular Presupuesto</button>
+        <button className='budget-table__submit-btn' onClick={handleSubmit}>
+          Calculate
+        </button>
       </div>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setModalOpen(false)}
-        title='Resultado del Presupuesto'>
-        <p>{modalContent}</p>
+      <Modal isOpen={isModalOpen} onClose={closeModal} title='Budget Result'>
+        <div dangerouslySetInnerHTML={{ __html: modalContent }} />
       </Modal>
-    </>
+    </section>
   );
 };

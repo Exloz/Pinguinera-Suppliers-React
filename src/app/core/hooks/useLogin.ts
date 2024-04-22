@@ -8,15 +8,19 @@ export const useLogin = () => {
   const [error, setError] = useState<string>();
   const { dispatch } = useContext(AppContext);
 
-  const authenticate = (email: string, password: string) =>
-    loginService({ email, password }).then((isAuthenticated) => {
+  const authenticate = async (email: string, password: string) => {
+    try {
+      const isAuthenticated = await loginService({ email, password });
       if (isAuthenticated) {
         dispatch({ type: 'USER_LOGGED' });
         navigate('/home/save-literature');
       } else {
-        setError('Incorrect email or password, try again');
+        alert('Incorrect Email or Password');
       }
-    });
+    } catch (error) {
+      alert('Check your email and password');
+    }
+  };
 
   return { authenticate, error };
 };
