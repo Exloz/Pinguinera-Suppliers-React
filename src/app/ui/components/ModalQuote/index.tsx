@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ModalQuote = ({ isOpen, onClose, title, children }) => {
+export const Modal = ({ isOpen, onClose, title, children }) => {
   if (!isOpen) return null;
 
   return (

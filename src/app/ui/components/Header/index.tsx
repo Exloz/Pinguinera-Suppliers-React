@@ -14,7 +14,7 @@ export const Header = ({ userName }: any): ReactElement => {
             <Link to='/home/quote-literature'>Quote</Link>
           </li>
           <li className='header__option'>
-            <Link to='/contact'>Budeget Optimization</Link>
+            <Link to='/home/budget-literature'>Budget Optimization</Link>
           </li>
         </ul>
       </nav>
