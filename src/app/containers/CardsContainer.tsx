@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { useLiterature } from '../core/hooks/useLiterature';
 import { Cards } from '../ui/components/LiteratureCard/index';
 import { AppContext } from '../core/state/AppContext';
@@ -18,7 +18,7 @@ export const CardsContainer: React.FC = () => {
           key={copy.literatureCopyId}
           literatureCopy={copy}
           onSelect={handleSelect}
-          selected={!!state.selectedLiterature[copy.literatureCopyId]}
+          selected={state.selectedLiterature[copy.literatureCopyId]}
         />
       ))}
     </>

@@ -8,7 +8,7 @@ export const useCreateLiterature = () => {
 
   const createLiterature = async (literatureData: ICreateCopy) => {
     try {
-      const newLiterature = await createLiteratureService(literatureData);
+      const newLiterature = await createLiteratureService(literatureData, dispatch);
       dispatch({ type: 'ADD_LITERATURE', payload: newLiterature });
     } catch (error) {
       console.error('Error creating literature:', error);

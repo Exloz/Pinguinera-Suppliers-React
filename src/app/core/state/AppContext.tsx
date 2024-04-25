@@ -37,6 +37,14 @@ export const reducer = (state: IState, action: IAction): IState => {
       return { ...state, literatureList: action.payload };
     case 'ADD_LITERATURE':
       return { ...state, literatureList: [...state.literatureList, action.payload] };
+    case 'UPDATE_LITERATURE':
+      const updatedList = state.literatureList.map((book) => {
+        if (book.literatureCopyId === action.payload.literatureCopyId) {
+          return { ...book, ...action.payload };
+        }
+        return book;
+      });
+      return { ...state, literatureList: updatedList };
     case 'TOGGLE_LITERATURE_SELECTION':
       const newSelection = {
         ...state.selectedLiterature,

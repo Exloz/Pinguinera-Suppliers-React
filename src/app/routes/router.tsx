@@ -8,6 +8,7 @@ import { SignUpPage } from '../pages/SignUpPage';
 import { CreateLiteraturePage } from '../pages/CreatePage';
 import { SelectedLiteratureEditor } from '../containers/QuoteLiteratureContainer';
 import { BudgetOverviewEditor } from '../containers/BudgetLiteratureContainer';
+import {Form} from "../ui/components/Form";
 
 export const router = createHashRouter([
   {

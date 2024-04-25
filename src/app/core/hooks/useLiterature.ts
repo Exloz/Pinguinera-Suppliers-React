@@ -6,9 +6,8 @@ export const useLiterature = () => {
   const { state, dispatch } = useContext(AppContext);
 
   useEffect(() => {
-    literatureListService()
+    literatureListService(dispatch)
       .then((literatureCopies) => {
-        console.log('literature hook');
         dispatch({ type: 'LITERATURE_GOTTEN', payload: literatureCopies });
       })
       .catch((error) => {

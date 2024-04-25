@@ -3,13 +3,18 @@ import { AppContext } from '../state/AppContext';
 import { quoteService } from '../services/supplierServices/quoteLiterature.service';
 import { formatQuoteDetails } from '../models/Modal';
 
+interface HandleQuantityChangeParams {
+  copyId: number;
+  quantity: number;
+}
+
 export const useLiteratureEditor = () => {
   const { state } = useContext(AppContext);
   const [quantities, setQuantities] = useState({});
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState('');
 
-  const handleQuantityChange = (copyId, quantity) => {
+  const handleQuantityChange = ({copyId, quantity}: HandleQuantityChangeParams) => {
     setQuantities((prev) => ({ ...prev, [copyId]: quantity }));
   };
 
